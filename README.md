@@ -65,3 +65,8 @@ Once the application starts, It present a main menu:
      - ***"section"***: *ticket's section*
 
             each ticket is list with this order: [SERIAL NUMBER, ROW, SEAT, PRICE]
+
+## Open for contribution
+1. **Delete Event** - Delete event from the list and the inventory
+2. **Duplicate Event** - user choose event to duplicate and all tickets init to available dict, ask user for new date
+3. **Show user ticket by serial number** - let user enter serial number of ticket and print ticket details (ticket and event information)
