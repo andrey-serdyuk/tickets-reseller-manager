@@ -50,12 +50,21 @@ def load_data(old_data):
     Returns:
         dict: The new data.
     """
-    try: #try to load data from the JSON file
-        with open(file_path, 'r') as dummy:
-            new_data = json.load(dummy) #load the data from the JSON file and store it in new_data variable
-            print('Data loaded successfully!')
-    except FileNotFoundError: #if the JSON file is not found, print an error message and return the existing data
-        print('File Not Found!')
+    loading_choice = "o" #init to overwrite as defualt
+    if len(old_data) > 0: #if there is existing data, ask user if they want to overwrite or append to it
+        loading_choice = input('Are you want to overwrite the existing data or append to it? (o - overwrite/a - append): ').lower()
+    if loading_choice == 'o' or loading_choice == 'a':
+        try: #try to load data from the JSON file
+            with open(file_path, 'r') as dummy:
+                new_data = json.load(dummy) #load the data from the JSON file and store it in new_data variable
+                if loading_choice == 'a': #if user chooses to append, no else need as the default is to overwrite
+                    new_data = old_data + new_data
+                print('Data loaded successfully!')
+        except FileNotFoundError: #if the JSON file is not found, print an error message and return the existing data
+            print('File Not Found!')
+            new_data = old_data
+    else:
+        print("Wrong Input!!!! Please enter only \'o\' or \'a\'!")
         new_data = old_data
     return new_data
 
