@@ -160,9 +160,11 @@ def duplicate_event(events_data):
     except ValueError:
         print('Wrong Input!!!! Please enter a valid option from the menu!\n')
         return events_data
+    #if user chose 0 - return to main menu
     if user_choice == 0:
         print('Return to add tickets menu...\n')
         return events_data
+    #if user chose any existing number of event - duplicate it and make all tickets available
     elif 0 < user_choice <= len(events_data):
         new_event = events_data[user_choice - 1].copy()
         new_event['available'] = {}
